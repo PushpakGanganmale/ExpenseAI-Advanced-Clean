@@ -1,262 +1,301 @@
-# 🚀 ExpenseAI - Advanced Expense Tracker
+# ExpenseAI – Advanced Expense Tracker
 
-<div align="center">
-  <br />
-  <a href="https://expense-tracker-two-kappa-56.vercel.app">🔗 Live Demo</a> • 
-  <a href="https://expense-tracker-7n2z.onrender.com/api-docs">📖 API Docs</a> •
-  <a href="https://github.com/Prince-Chakraborty/expense-tracker">💻 GitHub</a>
-  <br /><br />
-</div>
+**A Full-Stack Expense Management Platform built with Next.js, TypeScript, Node.js, Express.js, PostgreSQL, and Redis.**
 
-> Production-grade AI-powered expense tracking application built with Next.js, Node.js, PostgreSQL, and Redis.
+[Live Demo](https://expense-ai-advanced-clean.vercel.app) • [Backend API](https://expenseai-advanced-clean.onrender.com) • [GitHub Repository](https://github.com/PushpakGanganmale/ExpenseAI-Advanced-Clean)
 
-[![CI/CD](https://github.com/Prince-Chakraborty/expense-tracker/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Prince-Chakraborty/expense-tracker)
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://expense-tracker-two-kappa-56.vercel.app)
-[![API Docs](https://img.shields.io/badge/API-Swagger-blue)](https://expense-tracker-7n2z.onrender.com/api-docs)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql)
+![Redis](https://img.shields.io/badge/Redis-Caching-DC382D?logo=redis)
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker)
 
 ---
 
-## 🔗 Live Demo
+## Overview
 
-| Service | URL |
-|---------|-----|
-| 🌐 Frontend | [expense-tracker-two-kappa-56.vercel.app](https://expense-tracker-two-kappa-56.vercel.app) |
-| 🔧 Backend API | [expense-tracker-7n2z.onrender.com](https://expense-tracker-7n2z.onrender.com) |
-| 📖 Swagger Docs | [API Documentation](https://expense-tracker-7n2z.onrender.com/api-docs) |
-| 💻 GitHub | [Prince-Chakraborty/expense-tracker](https://github.com/Prince-Chakraborty/expense-tracker) |
+ExpenseAI is a full-stack financial management application designed to help users track expenses, manage budgets, monitor recurring transactions, and understand their spending patterns.
 
-> **Test Credentials:** Email: `test@gmail.com` | Password: `Test@1234`
+The application provides an interactive dashboard with financial summaries, expense management, budget tracking, analytics, and data import/export capabilities.
+
+It combines a modern Next.js frontend with a Node.js and Express backend, PostgreSQL for persistent storage, and Redis for caching infrastructure.
+
+## Live Deployment
+
+| Component | Deployment |
+|---|---|
+| Frontend | [Vercel](https://expense-ai-advanced-clean.vercel.app) |
+| Backend | [Render](https://expenseai-advanced-clean.onrender.com) |
+| Backend Health | [Health Check](https://expenseai-advanced-clean.onrender.com/health) |
+| GitHub | [Source Code](https://github.com/PushpakGanganmale/ExpenseAI-Advanced-Clean) |
+
+## Features
+
+### 1. Authentication & User Management
+- User registration and login.
+- JWT-based authentication.
+- Authenticated dashboard access.
+- User-specific financial data.
+- Google OAuth integration and callback configuration.
+- Secure password handling on the backend.
+
+### 2. Expense Management
+- Add new expenses.
+- Update existing transactions.
+- Delete expenses.
+- View transaction history.
+- Manage personal financial records.
+- Paginated expense data.
+
+### 3. Financial Dashboard
+- Interactive dashboard.
+- Total income and expense summaries.
+- Financial statistics.
+- Spending visualizations.
+- Category-wise expense breakdown.
+- Monthly financial analytics.
+
+### 4. Budget Management
+- Create category-based budgets.
+- Track budget allocation.
+- Monitor spending against budget limits.
+- Display budget progress.
+- Budget management dashboard.
+
+### 5. Recurring Expenses
+- Add recurring transactions.
+- Manage recurring expense records.
+- Track scheduled financial commitments.
+
+### 6. Data Import & Export
+- CSV expense import.
+- PDF import support.
+- CSV expense export.
+- Transaction data management.
+
+### 7. Receipt OCR Development
+- Backend receipt-processing implementation.
+- OCR-related controller, route, and service integration.
+- Receipt data extraction workflow development.
+
+### 8. Backend & Infrastructure
+- REST API architecture.
+- PostgreSQL database integration.
+- Sequelize ORM.
+- Redis integration.
+- Docker Compose development environment.
+- Environment-based configuration.
+- Frontend/backend API integration.
 
 ---
 
-## 🚩 Problem Statement
+## Technology Stack
 
-Managing personal finances is painful. People lose track of spending, miss budget limits, and waste hours manually categorizing expenses. ExpenseAI solves this with AI-powered receipt scanning, automatic categorization, real-time budget alerts, intelligent anomaly detection, and recurring expense automation.
+| Technology | Implementation |
+|---|---|
+| Next.js 16 | Frontend framework |
+| React | UI components |
+| TypeScript | Frontend type safety |
+| Node.js | Backend runtime |
+| Express.js | REST API |
+| PostgreSQL 15 | Relational database |
+| Sequelize | ORM and database operations |
+| Redis 7 | Caching infrastructure |
+| JWT | Authentication |
+| Google OAuth 2.0 | Social authentication integration |
+| Docker Compose | Local service orchestration |
+| Vercel | Frontend deployment |
+| Render | Backend deployment |
 
+## Application Architecture
 
----
-
-## 📸 Screenshots
-
-| Dashboard | Add Expense | Budget |
-|:---------:|:-----------:|:------:|
-| ![Dashboard](./screenshots/dashboard.png) | ![Add Expense](./screenshots/add-expense.png) | ![Budget](./screenshots/budget%20tracker.png) |
-
-| Login | Expenses | Recurring |
-|:-----:|:--------:|:---------:|
-| ![Login](./screenshots/login.png) | ![Expenses](./screenshots/all%20expenses.png) | ![Recurring](./screenshots/recurring%20expenses.png) |
-
----
-
-## 🏗️ Architecture
+```text
+              ┌──────────────────────────┐
+              │       Next.js 16         │
+              │    React + TypeScript    │
+              │        Frontend         │
+              └────────────┬─────────────┘
+                           │
+                       REST API
+                           │
+              ┌────────────▼─────────────┐
+              │       Express.js         │
+              │        Node.js           │
+              │        Backend           │
+              └────────────┬─────────────┘
+                           │
+                ┌──────────┼──────────┐
+                │          │          │
+          ┌─────▼────┐ ┌───▼────┐ ┌──▼────────┐
+          │PostgreSQL│ │ Redis  │ │ OCR       │
+          │Database  │ │ Cache  │ │ Services  │
+          └──────────┘ └────────┘ └───────────┘
 ```
-┌─────────────────┐         ┌─────────────────┐         ┌─────────────────┐
-│   Next.js 16    │ ──────> │   Express.js    │ ──────> │  PostgreSQL 15  │
-│   (Frontend)    │         │   (Backend)     │         │  (Supabase)     │
-└─────────────────┘         └─────────────────┘         └─────────────────┘
-       │                           │                            │
-  Vercel CDN                       ├──────────────────>  ┌──────────────┐
-                                   │                     │  Redis       │
-                                   │                     │  (Upstash)   │
-                                   │                     └──────────────┘
-                                   ├──────────────────>  ┌──────────────┐
-                                   │                     │  WebSocket   │
-                                   │                     └──────────────┘
-                                   └──────────────────>  ┌──────────────┐
-                                                         │ AWS Textract │
-                                                         └──────────────┘
+
+## Project Structure
+
+```text
+ExpenseAI-Advanced-Clean/
+│
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── scripts/
+│   ├── package.json
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   │   └── app/
+│   │       ├── (auth)/
+│   │       └── (dashboard)/
+│   ├── package.json
+│   └── ...
+│
+├── docker-compose.yml
+├── README.md
+└── ...
 ```
 
----
+## Local Installation
 
-## 🛠️ Tech Stack & Rationale
+### Prerequisites
 
-| Technology | Purpose | Why Chosen |
-|------------|---------|------------|
-| **Next.js 16** | Frontend | SSR, file-based routing, production-ready |
-| **Node.js + Express** | Backend API | Non-blocking I/O, REST API |
-| **PostgreSQL** | Database | ACID compliance for financial data integrity |
-| **Sequelize ORM** | Database queries | Type-safe queries, migrations |
-| **Redis (Upstash)** | Caching | 5-min TTL, reduces DB load by 40% |
-| **JWT** | Authentication | Stateless auth, 15min access + 7day refresh |
-| **BCrypt** | Password hashing | Industry-standard (12 rounds) |
-| **Google OAuth 2.0** | Social login | Reduces signup friction by 60% |
-| **WebSocket** | Real-time alerts | Instant budget breach notifications |
-| **AWS Textract** | OCR | Extract text from receipts automatically |
-| **Docker** | Containerization | Consistent dev/prod environments |
-| **GitHub Actions** | CI/CD | Automated testing and deployment |
-| **Swagger** | API docs | Interactive API documentation |
-| **Joi** | Validation | Schema-based input validation |
+- Node.js and npm
+- PostgreSQL
+- Redis
+- Docker Desktop (recommended)
 
----
+### 1. Clone Repository
 
-## ✨ Features
+```bash
+git clone https://github.com/PushpakGanganmale/ExpenseAI-Advanced-Clean.git
 
-### 🔐 Security
-- JWT authentication with refresh token rotation
-- BCrypt password hashing (12 rounds)
-- Google OAuth 2.0 integration
-- Rate limiting (10 req/15min on auth endpoints)
-- Role-based access control (admin/user)
-- Centralized error handling
+cd ExpenseAI-Advanced-Clean
+```
 
-### 💰 Expense Management
-- Full CRUD operations with user isolation
-- Auto-categorization (7 categories)
-- CSV/PDF import with bulk processing
-- CSV export with all expense data
-- Pagination (20 per page)
+### 2. Configure Environment Variables
 
-### 📊 Analytics
-- Total stats (amount, count, average)
-- Category-wise spending breakdown
-- Monthly spending trends
-- Z-score anomaly detection for unusual transactions
+Configure the backend and frontend environment variables using the provided example files.
 
-### 💳 Budget Tracking
-- Set monthly budgets per category
-- Real-time progress bars (green/yellow/red)
-- WebSocket alerts when budget exceeded
+Frontend API configuration:
 
-### 🔄 Recurring Expenses
-- Daily/weekly/monthly/yearly frequencies
-- Auto-processing every 24 hours
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000/api
+```
 
-### 👨‍💼 Admin Dashboard
-- User management and system statistics
+Configure database credentials, JWT secrets, Redis connection, and OAuth credentials in the backend environment file.
 
----
+Never commit actual credentials or `.env` files.
 
-## 🚀 Setup & Installation
+### 3. Start Infrastructure
 
-### Backend
+```bash
+docker-compose up -d
+```
+
+This starts the configured PostgreSQL and Redis services.
+
+### 4. Start Backend
+
 ```bash
 cd backend
 npm install
-cp .env.example .env
 npm start
 ```
 
-### Frontend
+### 5. Start Frontend
+
+Open another terminal:
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-### Docker
-```bash
-docker-compose up -d
+Open the application:
+
+```text
+http://localhost:3000
 ```
 
----
+## Deployment
 
-## 🔑 Environment Variables
-```env
-PORT=8000
-NODE_ENV=development
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=expense_tracker
-DB_USER=admin
-DB_PASSWORD=admin123
-JWT_ACCESS_SECRET=your_secret
-JWT_REFRESH_SECRET=your_secret
-JWT_ACCESS_EXPIRES=15m
-JWT_REFRESH_EXPIRES=7d
-REDIS_URL=redis://localhost:6379
-GOOGLE_CLIENT_ID=your_client_id
-GOOGLE_CLIENT_SECRET=your_client_secret
-GOOGLE_CALLBACK_URL=http://localhost:8000/api/auth/google/callback
-FRONTEND_URL=http://localhost:3000
-```
+The application is deployed using separate frontend and backend services.
 
----
+**Frontend – Vercel**
+- Production frontend hosting.
+- Environment-based backend API configuration.
+- Production build optimization.
 
-## 📡 API Endpoints
+**Backend – Render**
+- Node.js and Express API hosting.
+- PostgreSQL connectivity.
+- Production environment configuration.
+- Health endpoint monitoring.
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | /api/auth/register | Register user |
-| POST | /api/auth/login | Login user |
-| GET | /api/auth/google | Google OAuth |
-| GET | /api/expenses | Get expenses (paginated) |
-| POST | /api/expenses | Create expense |
-| GET | /api/analytics/stats | Total stats |
-| GET | /api/analytics/categories | Category breakdown |
-| GET | /api/analytics/monthly | Monthly trends |
-| GET | /api/analytics/anomalies | Detect anomalies |
-| POST | /api/budgets | Set budget |
-| POST | /api/recurring | Add recurring expense |
-| POST | /api/import | Import CSV/PDF |
-| GET | /api/export/csv | Export to CSV |
+## Engineering Challenges
 
-Full docs: [Swagger UI](https://expense-tracker-7n2z.onrender.com/api-docs)
+During development and deployment, several practical engineering problems were addressed:
 
----
+**1. PostgreSQL Cloud Connectivity**
 
-## 🧪 Testing
-```bash
-cd backend && npm test
-```
+Configured PostgreSQL connectivity for local Docker development and cloud deployment, including resolving Supabase IPv4/IPv6 connection compatibility through the Session Pooler.
 
----
+**2. Google OAuth Configuration**
 
-## 📈 Resume Bullet Points (STAR Method)
+Worked on Google OAuth callback URLs and frontend/backend authentication integration across local and production environments.
 
-- **Developed** full-stack AI-powered expense tracker reducing manual logging by 60% via AWS Textract OCR with JWT auth and Google OAuth 2.0
-- **Implemented** Redis caching layer with 5-minute TTL, improving API response times by 40% for analytics endpoints
-- **Built** Z-score anomaly detection algorithm that automatically flags unusual transactions
-- **Designed** PostgreSQL schema with ACID compliance and automated CI/CD pipeline via GitHub Actions
-- **Architected** WebSocket server for real-time budget alerts and recurring expense automation
+**3. Production API Integration**
 
----
+Configured frontend API URLs and resolved local-versus-production backend endpoint mismatches.
 
-## 🔑 ATS Keywords
+**4. Docker Infrastructure**
 
-RESTful API, MVC Architecture, Node.js, Express.js, PostgreSQL, Redis, JWT Authentication, BCrypt, OAuth 2.0, Google OAuth, Role-Based Access Control, WebSocket, Docker, CI/CD, GitHub Actions, Jest, Swagger, Joi Validation, Pagination, Caching, OCR, AWS Textract, Chart.js, Next.js, Sequelize ORM, Rate Limiting, Anomaly Detection, Recurring Transactions, Budget Tracking, CSV Export, Vercel, Render, Supabase, Upstash
+Configured a multi-container local environment using PostgreSQL 15, Redis 7, and the Node.js backend.
 
----
+**5. Next.js Production Build**
 
+Resolved TypeScript, JSX, and production compilation issues.
 
----
+**6. UTF-8 Encoding and UI Rendering**
 
+Fixed character encoding issues affecting dashboard icons and notification messages, restoring the intended UI presentation.
+
+**7. File Upload Handling**
+
+Worked on file-upload compatibility for production deployment using memory-based upload handling and temporary storage.
+
+**8. GitHub and Deployment Workflow**
+
+Maintained the project repository and pushed frontend and backend updates to GitHub to support production deployment.
+
+## Future Improvements
+
+- More advanced AI-powered expense categorization.
+- Enhanced receipt OCR automation.
+- Email and notification integrations.
+- Multi-currency financial management.
+- Bank account integration.
+- Mobile application.
+
+## License
+
+MIT License.
+
+## Author
+
+**Pushpak Ganganmale**
+
+- GitHub: [PushpakGanganmale](https://github.com/PushpakGanganmale)
+- LinkedIn: [Pushpak Ganganmale](https://linkedin.com/in/pushpakganganmale/)
 
 ---
 
-## 🧠 Challenges Overcome
-
-- **IPv4/IPv6 Database Connection:** Solved Supabase IPv6 incompatibility with Render by switching to Session Pooler
-- **File Upload on Serverless:** Fixed multer disk storage failure on Render by switching to memory storage + OS temp directory
-- **Redis URL vs Host/Port:** Migrated from host/port config to URL-based connection for Upstash cloud Redis
-- **TypeScript Strict Mode:** Resolved 15+ TypeScript errors in Next.js production build
-- **CORS in Production:** Configured dynamic CORS origins for Vercel frontend + Render backend
-- **JWT Refresh Token Rotation:** Implemented secure token rotation to prevent replay attacks
-- **React State Closure Bug:** Fixed inline onClick handlers to capture state values at click time
-
-## 🔮 Future Enhancements
-
-- 🤖 AI-powered expense categorization using GPT
-- 🏦 Bank API integration (Plaid API)
-- 📱 Mobile app (React Native)
-- 💹 Investment tracking
-- 🌍 Multi-currency support
-- 📧 Email notifications for budget alerts
-
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](./LICENSE) for details.
-
----
-
-## 👨‍💻 Author
-
-**Prince Chakraborty**
-- GitHub: [@Prince-Chakraborty](https://github.com/Prince-Chakraborty)
-- LinkedIn: [Prince Chakraborty](https://www.linkedin.com/in/prince-chakraborty-1287312b0/)
+*Built as a full-stack development project to explore modern frontend engineering, REST API development, relational database management, authentication, and cloud deployment.*
