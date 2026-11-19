@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment files - NEVER commit these
+.env
+*/.env
+**/.env
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Uploads
+backend/uploads/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# Redis dump
+dump.rdb
+
+# Local environment and secrets
+.env*
+!.env.example
+**/.env*
+!**/.env.example
+
+# Temporary backups
+*.bak
+*.backup
+
