@@ -1,5 +1,4 @@
-﻿const fs = require('fs');
-const path = require('path');
+﻿const path = require('path');
 const pdfParse = require('pdf-parse');
 const { createWorker } = require('tesseract.js');
 
@@ -64,19 +63,17 @@ const autoCateggorize = (text) => {
   return 'other';
 };
 
-const extractTextFromReceipt = async (imagePath) => {
+const extractTextFromReceipt = async (fileBuffer, originalName) => {
   try {
-    if (!imagePath || !fs.existsSync(imagePath)) {
-      throw new Error('Receipt file not found');
+    if (!Buffer.isBuffer(fileBuffer) || fileBuffer.length === 0) {
+      throw new Error('Receipt file is empty or missing');
     }
 
-    const buffer = fs.readFileSync(imagePath);
-    const extension = path.extname(imagePath).toLowerCase();
-
+    const extension = path.extname(originalName || '').toLowerCase();
     let extractedText = '';
 
     if (extension === '.pdf') {
-      const pdfData = await pdfParse(buffer);
+      const pdfData = await pdfParse(fileBuffer);
       extractedText = pdfData.text || '';
 
       if (!extractedText.trim()) {
@@ -86,7 +83,7 @@ const extractTextFromReceipt = async (imagePath) => {
       }
     } else if (['.jpg', '.jpeg', '.png'].includes(extension)) {
       const worker = await getWorker();
-      const result = await worker.recognize(buffer);
+      const result = await worker.recognize(fileBuffer);
       extractedText = result.data.text || '';
     } else {
       throw new Error('Unsupported receipt format');

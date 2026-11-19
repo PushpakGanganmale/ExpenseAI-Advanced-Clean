@@ -1,4 +1,4 @@
-const swaggerJsdoc = require('swagger-jsdoc');
+﻿const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 const options = {
@@ -228,7 +228,7 @@ const options = {
       '/api/ocr/scan': {
         post: {
           tags: ['OCR'],
-          summary: 'Scan receipt using AWS Textract OCR',
+          summary: 'Scan receipt using Tesseract.js OCR',
           requestBody: {
             content: {
               'multipart/form-data': {

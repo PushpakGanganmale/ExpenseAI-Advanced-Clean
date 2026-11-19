@@ -1,16 +1,21 @@
-﻿const { extractTextFromReceipt, autoCateggorize } = require('../services/ocr.service');
-const fs = require('fs');
+﻿const {
+  extractTextFromReceipt,
+  autoCateggorize,
+} = require('../services/ocr.service');
 
 const scanReceipt = async (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ message: 'No file uploaded' });
+  if (!req.file || !req.file.buffer) {
+    return res.status(400).json({
+      message: 'No receipt file uploaded',
+    });
   }
-
-  const imagePath = req.file.path;
 
   try {
     const { extractedText, amount, title } =
-      await extractTextFromReceipt(imagePath);
+      await extractTextFromReceipt(
+        req.file.buffer,
+        req.file.originalname
+      );
 
     const category = autoCateggorize(extractedText);
 
@@ -18,21 +23,17 @@ const scanReceipt = async (req, res) => {
       message: 'Receipt scanned successfully',
       data: {
         title: title || 'Receipt Expense',
-        amount: amount || 0,
+        amount: amount ?? 0,
         category,
         extractedText,
       },
     });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
-  } finally {
-    try {
-      await fs.promises.unlink(imagePath);
-    } catch (cleanupError) {
-      if (cleanupError.code !== 'ENOENT') {
-        console.error('Receipt file cleanup failed:', cleanupError.message);
-      }
-    }
+    console.error('Receipt OCR failed:', error.message);
+
+    return res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
