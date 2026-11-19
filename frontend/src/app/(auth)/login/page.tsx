@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { API_BASE_URL } from '@/lib/config';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -134,7 +134,7 @@ export default function LoginPage() {
           <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>or</span>
           <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
         </div>
-        <a href="http://localhost:8001/api/auth/google" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', padding: '12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', fontWeight: '500', textDecoration: 'none', marginBottom: '20px' }}>
+        <a href={`${API_BASE_URL}/auth/google`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', padding: '12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', fontWeight: '500', textDecoration: 'none', marginBottom: '20px' }}>
           <span style={{ fontSize: '18px' }}>ðŸ”—</span> Continue with Google
         </a>
         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: '14px' }}>
