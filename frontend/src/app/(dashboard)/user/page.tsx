@@ -236,15 +236,15 @@ export default function UserDashboard() {
     scales: { x: { ticks: { color: '#8888aa' }, grid: { color: '#2a2a3a' } }, y: { ticks: { color: '#8888aa' }, grid: { color: '#2a2a3a' } } },
   };
 
-  const getCatIcon = (cat: string) => ({ food:'??', transport:'??', shopping:'???', health:'??', entertainment:'??', utilities:'?', other:'??' }[cat] || '??');
+  const getCatIcon = (cat: string) => ({ food:'\u{1F354}', transport:'\u{1F697}', shopping:'\u{1F6CD}\uFE0F', health:'\u{1F48A}', entertainment:'\u{1F3AC}', utilities:'\u26A1', other:'\u{1F4B0}' }[cat] || '\u{1F4B0}');
 
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '??' },
-    { id: 'expenses', label: 'Expenses', icon: '??' },
+    { id: 'dashboard', label: 'Dashboard', icon: '\u{1F4CA}' },
+    { id: 'expenses', label: 'Expenses', icon: '\u{1F4B3}' },
     { id: 'add', label: 'Add Expense', icon: '?' },
-    { id: 'budget', label: 'Budget', icon: '??' },
-    { id: 'recurring', label: 'Recurring', icon: '??' },
-    { id: 'import', label: 'Import', icon: '??' },
+    { id: 'budget', label: 'Budget', icon: '\u{1F3AF}' },
+    { id: 'recurring', label: 'Recurring', icon: '\u{1F504}' },
+    { id: 'import', label: 'Import', icon: '\u{1F4C4}' },
   ];
 
   const inputStyle = { width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none', boxSizing: 'border-box' as const, marginBottom: '12px' };
@@ -253,7 +253,7 @@ export default function UserDashboard() {
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
       <div style={{ width: '240px', background: 'var(--bg-card)', borderRight: '1px solid var(--border)', padding: '24px 16px', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh', zIndex: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', padding: '0 8px' }}>
-          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6c63ff, #00d68f)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>??</div>
+          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6c63ff, #00d68f)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>{'\u{1F4B0}'}</div>
           <span style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text-primary)' }}>ExpenseAI</span>
         </div>
         <nav style={{ flex: 1 }}>
@@ -279,14 +279,14 @@ export default function UserDashboard() {
 
         {activeTab === 'dashboard' && (
           <div>
-            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '4px' }}>Good day, {user?.name}! ??</h1>
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '4px' }}>Good day, {user?.name}! {'\u{1F44B}'}</h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '32px' }}>Here is your financial overview</p>
             {stats && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '24px' }}>
                 {[
-                  { label: 'Total Spent', value: 'Rs.' + Number(stats.total).toFixed(2), icon: '??', color: '#6c63ff', bg: 'rgba(108,99,255,0.1)' },
-                  { label: 'Transactions', value: stats.count, icon: '??', color: '#00d68f', bg: 'rgba(0,214,143,0.1)' },
-                  { label: 'Avg per Transaction', value: 'Rs.' + Number(stats.average).toFixed(2), icon: '??', color: '#ffd166', bg: 'rgba(255,209,102,0.1)' },
+                  { label: 'Total Spent', value: 'Rs.' + Number(stats.total).toFixed(2), icon: '\u{1F4B8}', color: '#6c63ff', bg: 'rgba(108,99,255,0.1)' },
+                  { label: 'Transactions', value: stats.count, icon: '\u{1F4CA}', color: '#00d68f', bg: 'rgba(0,214,143,0.1)' },
+                  { label: 'Avg per Transaction', value: 'Rs.' + Number(stats.average).toFixed(2), icon: '\u{1F4C8}', color: '#ffd166', bg: 'rgba(255,209,102,0.1)' },
                 ].map(s => (
                   <div key={s.label} style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -339,7 +339,7 @@ export default function UserDashboard() {
                     const a = document.createElement('a');
                     a.href = url; a.download = 'expenses.csv'; a.click();
                   });
-              }} style={{ padding: '10px 20px', background: 'linear-gradient(135deg, #00d68f, #06B6D4)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>?? Export CSV</button>
+              }} style={{ padding: '10px 20px', background: 'linear-gradient(135deg, #00d68f, #06B6D4)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>Export CSV</button>
             </div>
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
               {expenses.length === 0 ? <p style={{ color: 'var(--text-secondary)', textAlign: 'center', padding: '40px' }}>No expenses yet.</p> :
@@ -348,7 +348,7 @@ export default function UserDashboard() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ width: '40px', height: '40px', background: 'rgba(108,99,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>{getCatIcon(exp.category)}</div>
                       <div>
-                        <p style={{ margin: 0, fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }}>{exp.title} {exp.isAnomaly && '??'}</p>
+                        <p style={{ margin: 0, fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }}>{exp.title} {exp.isAnomaly && '\u26A0\uFE0F'}</p>
                         <p style={{ margin: 0, fontSize: '12px', color: 'var(--text-muted)' }}>{exp.category} ? {exp.date}</p>
                       </div>
                     </div>
@@ -382,7 +382,7 @@ export default function UserDashboard() {
 
         {activeTab === 'budget' && (
           <div style={{ maxWidth: '600px' }}>
-            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Budget Tracker ??</h1>
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Budget Tracker</h1>
             {message && <div style={{ background: message.includes('?') ? 'rgba(0,214,143,0.1)' : 'rgba(255,77,77,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: message.includes('?') ? '#00d68f' : '#ff4d4d' }}>{message}</div>}
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px', marginBottom: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Set Monthly Budget</h3>
@@ -401,9 +401,9 @@ export default function UserDashboard() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
                       <div>
                         <span style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)', textTransform: 'capitalize' }}>{b.category}</span>
-                        {b.isExceeded && <span style={{ marginLeft: '8px', fontSize: '12px', color: '#ff4d4d', fontWeight: '600' }}>?? EXCEEDED</span>}
+                        {b.isExceeded && <span style={{ marginLeft: '8px', fontSize: '12px', color: '#ff4d4d', fontWeight: '600' }}>\u26A0\uFE0F EXCEEDED</span>}
                       </div>
-                      <button type="button" onClick={() => handleDeleteBudget(String(b.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>???</button>
+                      <button type="button" onClick={() => handleDeleteBudget(String(b.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>{'\u{1F5D1}\uFE0F'}</button>
                     </div>
                     <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', marginBottom: '8px' }}>
                       <div style={{ height: '100%', width: b.percentage + '%', background: b.isExceeded ? '#ff4d4d' : Number(b.percentage) > 80 ? '#ffd166' : '#00d68f', borderRadius: '4px' }} />
@@ -422,7 +422,7 @@ export default function UserDashboard() {
 
         {activeTab === 'recurring' && (
           <div style={{ maxWidth: '600px' }}>
-            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Recurring Expenses ??</h1>
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Recurring Expenses</h1>
             {message && <div style={{ background: message.includes('?') ? 'rgba(0,214,143,0.1)' : 'rgba(255,77,77,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: message.includes('?') ? '#00d68f' : '#ff4d4d' }}>{message}</div>}
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px', marginBottom: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Add Recurring Expense</h3>
@@ -452,7 +452,7 @@ export default function UserDashboard() {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ color: '#00d68f', fontWeight: '600', fontSize: '15px' }}>Rs.{r.amount}</span>
-                      <button type="button" onClick={() => handleDeleteRecurring(String(r.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>???</button>
+                      <button type="button" onClick={() => handleDeleteRecurring(String(r.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>{'\u{1F5D1}\uFE0F'}</button>
                     </div>
                   </div>
                 ))
@@ -468,7 +468,7 @@ export default function UserDashboard() {
               {importMessage && importMessage !== '' && <div style={{ background: importMessage.includes('error') || importMessage.includes('Error') ? 'rgba(255,77,77,0.1)' : 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: importMessage.includes('error') || importMessage.includes('Error') ? '#ff4d4d' : '#00d68f' }}>{importMessage}</div>}
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '24px', lineHeight: '1.6' }}>Upload a CSV or PDF file to automatically import expenses.</p>
               <label style={{ display: 'block', padding: '40px', background: 'var(--bg)', border: '2px dashed var(--border)', borderRadius: '12px', textAlign: 'center', cursor: 'pointer' }}>
-                <div style={{ fontSize: '40px', marginBottom: '12px' }}>??</div>
+                <div style={{ fontSize: '40px', marginBottom: '12px' }}>{'\u{1F4B0}'}</div>
                 <p style={{ color: 'var(--text-primary)', fontWeight: '600', marginBottom: '4px' }}>Click to upload</p>
                 <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>CSV or PDF up to 10MB</p>
                 <input type="file" accept=".csv,.pdf" onChange={handleImport} style={{ display: 'none' }} />
