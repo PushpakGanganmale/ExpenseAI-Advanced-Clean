@@ -241,7 +241,7 @@ export default function UserDashboard() {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '\u{1F4CA}' },
     { id: 'expenses', label: 'Expenses', icon: '\u{1F4B3}' },
-    { id: 'add', label: 'Add Expense', icon: '?' },
+    { id: 'add', label: 'Add Expense', icon: '\u{1F4B8}' },
     { id: 'budget', label: 'Budget', icon: '\u{1F3AF}' },
     { id: 'recurring', label: 'Recurring', icon: '\u{1F504}' },
     { id: 'import', label: 'Import', icon: '\u{1F4C4}' },
