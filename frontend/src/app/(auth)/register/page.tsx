@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { API_BASE_URL } from '@/lib/config';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -42,7 +42,7 @@ export default function RegisterPage() {
       <div style={{ position: 'absolute', bottom: '-200px', left: '-200px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(0,214,143,0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
       <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '20px', padding: '48px', width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, var(--accent), var(--accent-green))', borderRadius: '14px', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>ðŸ’°</div>
+          <div style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, var(--accent), var(--accent-green))', borderRadius: '14px', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>??</div>
           <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '6px' }}>Create account</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Start tracking your expenses today</p>
         </div>
@@ -58,7 +58,7 @@ export default function RegisterPage() {
         </div>
         <div style={{ marginBottom: '24px' }}>
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: 'var(--text-secondary)', marginBottom: '8px' }}>Password</label>
-          <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleRegister()} style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none', boxSizing: 'border-box' }} />
+          <input type="password" placeholder="????????" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleRegister()} style={{ width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none', boxSizing: 'border-box' }} />
         </div>
         <button onClick={handleRegister} disabled={loading} style={{ width: '100%', padding: '13px', background: loading ? 'var(--border)' : 'linear-gradient(135deg, var(--accent), var(--accent-light))', border: 'none', borderRadius: '10px', color: 'white', fontSize: '15px', fontWeight: '600', cursor: loading ? 'not-allowed' : 'pointer' }}>
           {loading ? 'Creating account...' : 'Create account'}

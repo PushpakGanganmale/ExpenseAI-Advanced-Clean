@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { API_BASE_URL } from '@/lib/config';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -166,12 +166,12 @@ export default function UserDashboard() {
       body: JSON.stringify({ category: cv, monthlyLimit: lv, month: mv }),
     }).then(r => r.json()).then(() => {
       setBudgetLimit('');
-      setMessage('âœ… Budget set successfully!');
+      setMessage('? Budget set successfully!');
       setLoading(false);
       setTimeout(() => setMessage(''), 3000);
       fetch(`${API_BASE_URL}/budgets?month=` + mv, { headers: { Authorization: 'Bearer ' + getToken() } })
         .then(r => r.json()).then(d => setBudgets(d.budgets || []));
-    }).catch(() => { setMessage('âŒ Failed to set budget'); setLoading(false); });
+    }).catch(() => { setMessage('? Failed to set budget'); setLoading(false); });
   };
 
   const handleDeleteBudget = (id: string) => {
@@ -188,11 +188,11 @@ export default function UserDashboard() {
       body: JSON.stringify({ title: recTitle, amount: parseFloat(recAmount), category: recCategory, frequency: recFrequency, nextDate: recNextDate, notes: recNotes }),
     }).then(r => r.json()).then(() => {
       setRecTitle(''); setRecAmount(''); setRecNextDate(''); setRecNotes('');
-      setMessage('âœ… Recurring expense added!');
+      setMessage('? Recurring expense added!');
       setLoading(false);
       setTimeout(() => setMessage(''), 3000);
       fetchRecurring();
-    }).catch(() => { setMessage('âŒ Failed to add recurring expense'); setLoading(false); });
+    }).catch(() => { setMessage('? Failed to add recurring expense'); setLoading(false); });
   };
 
   const handleDeleteRecurring = (id: string) => {
@@ -208,10 +208,10 @@ export default function UserDashboard() {
     const res = await fetch(`${API_BASE_URL}/import`, { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: formData });
     const data = await res.json();
     if (res.ok) {
-      setImportMessage('âœ… ' + (data.message || 'Import successful!'));
+      setImportMessage('? ' + (data.message || 'Import successful!'));
       fetchAll();
     } else {
-      setImportMessage('âŒ ' + (data.message || 'Import failed'));
+      setImportMessage('? ' + (data.message || 'Import failed'));
     }
   };
 
@@ -236,15 +236,15 @@ export default function UserDashboard() {
     scales: { x: { ticks: { color: '#8888aa' }, grid: { color: '#2a2a3a' } }, y: { ticks: { color: '#8888aa' }, grid: { color: '#2a2a3a' } } },
   };
 
-  const getCatIcon = (cat: string) => ({ food:'ðŸ”', transport:'ðŸš—', shopping:'ðŸ›ï¸', health:'ðŸ’Š', entertainment:'ðŸŽ¬', utilities:'âš¡', other:'ðŸ’°' }[cat] || 'ðŸ’°');
+  const getCatIcon = (cat: string) => ({ food:'??', transport:'??', shopping:'???', health:'??', entertainment:'??', utilities:'?', other:'??' }[cat] || '??');
 
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: 'ðŸ“Š' },
-    { id: 'expenses', label: 'Expenses', icon: 'ðŸ’³' },
-    { id: 'add', label: 'Add Expense', icon: 'âž•' },
-    { id: 'budget', label: 'Budget', icon: 'ðŸŽ¯' },
-    { id: 'recurring', label: 'Recurring', icon: 'ðŸ”' },
-    { id: 'import', label: 'Import', icon: 'ðŸ“' },
+    { id: 'dashboard', label: 'Dashboard', icon: '??' },
+    { id: 'expenses', label: 'Expenses', icon: '??' },
+    { id: 'add', label: 'Add Expense', icon: '?' },
+    { id: 'budget', label: 'Budget', icon: '??' },
+    { id: 'recurring', label: 'Recurring', icon: '??' },
+    { id: 'import', label: 'Import', icon: '??' },
   ];
 
   const inputStyle = { width: '100%', padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none', boxSizing: 'border-box' as const, marginBottom: '12px' };
@@ -253,7 +253,7 @@ export default function UserDashboard() {
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
       <div style={{ width: '240px', background: 'var(--bg-card)', borderRight: '1px solid var(--border)', padding: '24px 16px', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh', zIndex: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', padding: '0 8px' }}>
-          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6c63ff, #00d68f)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>ðŸ’°</div>
+          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6c63ff, #00d68f)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>??</div>
           <span style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text-primary)' }}>ExpenseAI</span>
         </div>
         <nav style={{ flex: 1 }}>
@@ -279,14 +279,14 @@ export default function UserDashboard() {
 
         {activeTab === 'dashboard' && (
           <div>
-            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '4px' }}>Good day, {user?.name}! ðŸ‘‹</h1>
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '4px' }}>Good day, {user?.name}! ??</h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '32px' }}>Here is your financial overview</p>
             {stats && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '24px' }}>
                 {[
-                  { label: 'Total Spent', value: 'Rs.' + Number(stats.total).toFixed(2), icon: 'ðŸ’¸', color: '#6c63ff', bg: 'rgba(108,99,255,0.1)' },
-                  { label: 'Transactions', value: stats.count, icon: 'ï¿½ï¿½', color: '#00d68f', bg: 'rgba(0,214,143,0.1)' },
-                  { label: 'Avg per Transaction', value: 'Rs.' + Number(stats.average).toFixed(2), icon: 'ðŸ“ˆ', color: '#ffd166', bg: 'rgba(255,209,102,0.1)' },
+                  { label: 'Total Spent', value: 'Rs.' + Number(stats.total).toFixed(2), icon: '??', color: '#6c63ff', bg: 'rgba(108,99,255,0.1)' },
+                  { label: 'Transactions', value: stats.count, icon: '??', color: '#00d68f', bg: 'rgba(0,214,143,0.1)' },
+                  { label: 'Avg per Transaction', value: 'Rs.' + Number(stats.average).toFixed(2), icon: '??', color: '#ffd166', bg: 'rgba(255,209,102,0.1)' },
                 ].map(s => (
                   <div key={s.label} style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -339,7 +339,7 @@ export default function UserDashboard() {
                     const a = document.createElement('a');
                     a.href = url; a.download = 'expenses.csv'; a.click();
                   });
-              }} style={{ padding: '10px 20px', background: 'linear-gradient(135deg, #00d68f, #06B6D4)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>â¬‡ï¸ Export CSV</button>
+              }} style={{ padding: '10px 20px', background: 'linear-gradient(135deg, #00d68f, #06B6D4)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>?? Export CSV</button>
             </div>
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
               {expenses.length === 0 ? <p style={{ color: 'var(--text-secondary)', textAlign: 'center', padding: '40px' }}>No expenses yet.</p> :
@@ -348,8 +348,8 @@ export default function UserDashboard() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ width: '40px', height: '40px', background: 'rgba(108,99,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>{getCatIcon(exp.category)}</div>
                       <div>
-                        <p style={{ margin: 0, fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }}>{exp.title} {exp.isAnomaly && 'âš ï¸'}</p>
-                        <p style={{ margin: 0, fontSize: '12px', color: 'var(--text-muted)' }}>{exp.category} â€¢ {exp.date}</p>
+                        <p style={{ margin: 0, fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }}>{exp.title} {exp.isAnomaly && '??'}</p>
+                        <p style={{ margin: 0, fontSize: '12px', color: 'var(--text-muted)' }}>{exp.category} ? {exp.date}</p>
                       </div>
                     </div>
                     <p style={{ margin: 0, fontSize: '15px', fontWeight: '600', color: '#ff4d4d' }}>-Rs.{exp.amount}</p>
@@ -364,7 +364,7 @@ export default function UserDashboard() {
           <div style={{ maxWidth: '520px' }}>
             <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Add Expense</h1>
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px' }}>
-              {message === 'success' && <div style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: '#00d68f' }}>âœ… Expense added!</div>}
+              {message === 'success' && <div style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: '#00d68f' }}>? Expense added!</div>}
               {message && message !== 'success' && <div style={{ background: 'rgba(255,77,77,0.1)', border: '1px solid rgba(255,77,77,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: '#ff4d4d' }}>{message}</div>}
               <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} style={inputStyle} />
               <input type="number" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} style={inputStyle} />
@@ -382,8 +382,8 @@ export default function UserDashboard() {
 
         {activeTab === 'budget' && (
           <div style={{ maxWidth: '600px' }}>
-            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Budget Tracker ðŸŽ¯</h1>
-            {message && <div style={{ background: message.includes('âœ…') ? 'rgba(0,214,143,0.1)' : 'rgba(255,77,77,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: message.includes('âœ…') ? '#00d68f' : '#ff4d4d' }}>{message}</div>}
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Budget Tracker ??</h1>
+            {message && <div style={{ background: message.includes('?') ? 'rgba(0,214,143,0.1)' : 'rgba(255,77,77,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: message.includes('?') ? '#00d68f' : '#ff4d4d' }}>{message}</div>}
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px', marginBottom: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Set Monthly Budget</h3>
               <input type="month" value={budgetMonth} onChange={e => setBudgetMonth(e.target.value)} style={inputStyle} />
@@ -391,7 +391,7 @@ export default function UserDashboard() {
                 {categories.map(cat => <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>)}
               </select>
               <input type="number" placeholder="Monthly Limit (Rs.)" value={budgetLimit} onChange={e => setBudgetLimit(e.target.value)} style={{ ...inputStyle, marginBottom: '20px' }} />
-              <button type="button" onClick={handleSetBudget} style={{ width: '100%', padding: '13px', background: loading ? '#1a1a2e' : 'linear-gradient(135deg, #6c63ff, #8b85ff)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s', transform: loading ? 'scale(0.98)' : 'scale(1)' }}>{loading ? 'â³ Setting Budget...' : 'Set Budget'}</button>
+              <button type="button" onClick={handleSetBudget} style={{ width: '100%', padding: '13px', background: loading ? '#1a1a2e' : 'linear-gradient(135deg, #6c63ff, #8b85ff)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s', transform: loading ? 'scale(0.98)' : 'scale(1)' }}>{loading ? '? Setting Budget...' : 'Set Budget'}</button>
             </div>
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Budget Status</h3>
@@ -401,9 +401,9 @@ export default function UserDashboard() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
                       <div>
                         <span style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)', textTransform: 'capitalize' }}>{b.category}</span>
-                        {b.isExceeded && <span style={{ marginLeft: '8px', fontSize: '12px', color: '#ff4d4d', fontWeight: '600' }}>âš ï¸ EXCEEDED</span>}
+                        {b.isExceeded && <span style={{ marginLeft: '8px', fontSize: '12px', color: '#ff4d4d', fontWeight: '600' }}>?? EXCEEDED</span>}
                       </div>
-                      <button type="button" onClick={() => handleDeleteBudget(String(b.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>ðŸ—‘ï¸</button>
+                      <button type="button" onClick={() => handleDeleteBudget(String(b.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>???</button>
                     </div>
                     <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', marginBottom: '8px' }}>
                       <div style={{ height: '100%', width: b.percentage + '%', background: b.isExceeded ? '#ff4d4d' : Number(b.percentage) > 80 ? '#ffd166' : '#00d68f', borderRadius: '4px' }} />
@@ -422,8 +422,8 @@ export default function UserDashboard() {
 
         {activeTab === 'recurring' && (
           <div style={{ maxWidth: '600px' }}>
-            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Recurring Expenses ðŸ”</h1>
-            {message && <div style={{ background: message.includes('âœ…') ? 'rgba(0,214,143,0.1)' : 'rgba(255,77,77,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: message.includes('âœ…') ? '#00d68f' : '#ff4d4d' }}>{message}</div>}
+            <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Recurring Expenses ??</h1>
+            {message && <div style={{ background: message.includes('?') ? 'rgba(0,214,143,0.1)' : 'rgba(255,77,77,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: message.includes('?') ? '#00d68f' : '#ff4d4d' }}>{message}</div>}
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px', marginBottom: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Add Recurring Expense</h3>
               <input type="text" placeholder="Title (e.g. Netflix, Rent)" value={recTitle} onChange={e => setRecTitle(e.target.value)} style={inputStyle} />
@@ -439,7 +439,7 @@ export default function UserDashboard() {
               </select>
               <input type="date" value={recNextDate} onChange={e => setRecNextDate(e.target.value)} style={inputStyle} />
               <input type="text" placeholder="Notes (optional)" value={recNotes} onChange={e => setRecNotes(e.target.value)} style={{ ...inputStyle, marginBottom: '20px' }} />
-              <button type="button" onClick={handleAddRecurring} style={{ width: '100%', padding: '13px', background: loading ? '#1a1a2e' : 'linear-gradient(135deg, #6c63ff, #8b85ff)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s', transform: loading ? 'scale(0.98)' : 'scale(1)' }}>{loading ? 'â³ Adding...' : '+ Add Recurring'}</button>
+              <button type="button" onClick={handleAddRecurring} style={{ width: '100%', padding: '13px', background: loading ? '#1a1a2e' : 'linear-gradient(135deg, #6c63ff, #8b85ff)', border: 'none', borderRadius: '10px', color: 'white', fontSize: '15px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s', transform: loading ? 'scale(0.98)' : 'scale(1)' }}>{loading ? '? Adding...' : '+ Add Recurring'}</button>
             </div>
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Active Recurring Expenses</h3>
@@ -448,11 +448,11 @@ export default function UserDashboard() {
                   <div key={r.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'var(--bg)', borderRadius: '12px', marginBottom: '8px' }}>
                     <div>
                       <p style={{ margin: 0, fontWeight: '600', color: 'var(--text-primary)', fontSize: '14px' }}>{r.title}</p>
-                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '12px' }}>{r.frequency} â€¢ Next: {r.nextDate} â€¢ {r.category}</p>
+                      <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '12px' }}>{r.frequency} ? Next: {r.nextDate} ? {r.category}</p>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ color: '#00d68f', fontWeight: '600', fontSize: '15px' }}>Rs.{r.amount}</span>
-                      <button type="button" onClick={() => handleDeleteRecurring(String(r.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>ðŸ—‘ï¸</button>
+                      <button type="button" onClick={() => handleDeleteRecurring(String(r.id))} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '16px' }}>???</button>
                     </div>
                   </div>
                 ))
@@ -468,7 +468,7 @@ export default function UserDashboard() {
               {importMessage && importMessage !== '' && <div style={{ background: importMessage.includes('error') || importMessage.includes('Error') ? 'rgba(255,77,77,0.1)' : 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: importMessage.includes('error') || importMessage.includes('Error') ? '#ff4d4d' : '#00d68f' }}>{importMessage}</div>}
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '24px', lineHeight: '1.6' }}>Upload a CSV or PDF file to automatically import expenses.</p>
               <label style={{ display: 'block', padding: '40px', background: 'var(--bg)', border: '2px dashed var(--border)', borderRadius: '12px', textAlign: 'center', cursor: 'pointer' }}>
-                <div style={{ fontSize: '40px', marginBottom: '12px' }}>ðŸ“</div>
+                <div style={{ fontSize: '40px', marginBottom: '12px' }}>??</div>
                 <p style={{ color: 'var(--text-primary)', fontWeight: '600', marginBottom: '4px' }}>Click to upload</p>
                 <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>CSV or PDF up to 10MB</p>
                 <input type="file" accept=".csv,.pdf" onChange={handleImport} style={{ display: 'none' }} />

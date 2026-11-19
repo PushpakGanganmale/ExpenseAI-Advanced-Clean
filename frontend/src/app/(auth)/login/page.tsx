@@ -72,7 +72,7 @@ export default function LoginPage() {
             margin: '0 auto 16px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: '24px',
-          }}>ðŸ’°</div>
+          }}>??</div>
           <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '6px' }}>Welcome back</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Sign in to your expense tracker</p>
         </div>
@@ -103,7 +103,7 @@ export default function LoginPage() {
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: 'var(--text-secondary)', marginBottom: '8px' }}>Password</label>
           <input
             type="password"
-            placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+            placeholder="????????"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
@@ -135,7 +135,7 @@ export default function LoginPage() {
           <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
         </div>
         <a href={`${API_BASE_URL}/auth/google`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', padding: '12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', fontWeight: '500', textDecoration: 'none', marginBottom: '20px' }}>
-          <span style={{ fontSize: '18px' }}>ðŸ”—</span> Continue with Google
+          <span style={{ fontSize: '18px' }}>??</span> Continue with Google
         </a>
         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: '14px' }}>
           Don't have an account?{' '}

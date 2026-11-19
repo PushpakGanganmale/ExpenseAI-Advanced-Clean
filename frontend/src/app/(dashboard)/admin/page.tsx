@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { API_BASE_URL } from '@/lib/config';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -34,11 +34,11 @@ export default function AdminDashboard() {
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
       <div style={{ width: '240px', background: 'var(--bg-card)', borderRight: '1px solid var(--border)', padding: '24px 16px', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
-          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #ff4d4d, #ffd166)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>ðŸ›¡ï¸</div>
+          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #ff4d4d, #ffd166)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>???</div>
           <span style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text-primary)' }}>Admin Panel</span>
         </div>
         <nav style={{ flex: 1 }}>
-          {[{id:'overview',label:'Overview',icon:'ðŸ“Š'},{id:'users',label:'Users',icon:'ðŸ‘¥'},{id:'settings',label:'Settings',icon:'âš™ï¸'}].map(item => (
+          {[{id:'overview',label:'Overview',icon:'??'},{id:'users',label:'Users',icon:'??'},{id:'settings',label:'Settings',icon:'??'}].map(item => (
             <button key={item.id} onClick={() => setActiveTab(item.id)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px', borderRadius: '10px', border: 'none', background: activeTab === item.id ? 'rgba(255,77,77,0.15)' : 'transparent', color: activeTab === item.id ? '#ff4d4d' : 'var(--text-secondary)', fontSize: '14px', cursor: 'pointer', marginBottom: '4px', textAlign: 'left', fontWeight: activeTab === item.id ? '600' : '400' }}>
               {item.icon} {item.label}
             </button>
@@ -57,9 +57,9 @@ export default function AdminDashboard() {
             <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '32px' }}>Platform statistics</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '32px' }}>
               {[
-                { label: 'Total Users', value: stats?.totalUsers || 0, icon: 'ðŸ‘¥', color: '#6c63ff' },
-                { label: 'Total Transactions', value: stats?.totalExpenses || 0, icon: 'ðŸ“', color: '#00d68f' },
-                { label: 'Total Amount', value: 'Rs.' + Number(stats?.totalAmount || 0).toFixed(2), icon: 'ðŸ’¸', color: '#ffd166' },
+                { label: 'Total Users', value: stats?.totalUsers || 0, icon: '??', color: '#6c63ff' },
+                { label: 'Total Transactions', value: stats?.totalExpenses || 0, icon: '??', color: '#00d68f' },
+                { label: 'Total Amount', value: 'Rs.' + Number(stats?.totalAmount || 0).toFixed(2), icon: '??', color: '#ffd166' },
               ].map(s => (
                 <div key={s.label} style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
                   <p style={{ margin: '0 0 8px', fontSize: '13px', color: 'var(--text-secondary)' }}>{s.label}</p>
