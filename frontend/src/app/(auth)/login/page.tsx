@@ -72,7 +72,17 @@ export default function LoginPage() {
             margin: '0 auto 16px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: '24px',
-          }}>??</div>
+          }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="15" rx="3"
+                stroke="white" strokeWidth="1.8"/>
+              <path d="M3 9H21M16 14H18"
+                stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+              <path d="M7 5V3H17V5"
+                stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+          </div>
           <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '6px' }}>Welcome back</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Sign in to your expense tracker</p>
         </div>
@@ -135,7 +145,13 @@ export default function LoginPage() {
           <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
         </div>
         <a href={`${API_BASE_URL}/auth/google`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', padding: '12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '10px', color: 'var(--text-primary)', fontSize: '15px', fontWeight: '500', textDecoration: 'none', marginBottom: '20px' }}>
-          <span style={{ fontSize: '18px' }}>??</span> Continue with Google
+          <svg width="20" height="20" viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.8 6.1-15z"/>
+  <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 1.9-6.9 1.9-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3C9.2 39.5 16.1 44 24 44z"/>
+  <path fill="#FBBC05" d="M12.6 27.5a12 12 0 0 1 0-7v-5.3H5.8a20 20 0 0 0 0 17.6l6.8-5.3z"/>
+  <path fill="#EA4335" d="M24 12.1c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6.1 29.5 4 24 4 16.1 4 9.2 8.5 5.8 15.2l6.8 5.3c1.6-4.8 6.1-8.4 11.4-8.4z"/>
+</svg> Continue with Google
         </a>
         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: '14px' }}>
           Don't have an account?{' '}
