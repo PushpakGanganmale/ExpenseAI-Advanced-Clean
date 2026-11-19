@@ -312,7 +312,14 @@ export default function UserDashboard() {
             )}
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '24px' }}>
               <h3 style={{ color: 'var(--text-primary)', marginBottom: '20px', fontSize: '15px', fontWeight: '600' }}>Recent Transactions</h3>
-              {expenses.slice(0,5).map(exp => (
+              {[...expenses]
+  .sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  })
+  .slice(0, 5)
+  .map(exp => (
                 <div key={exp.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--border)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div style={{ width: '40px', height: '40px', background: 'rgba(108,99,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>{getCatIcon(exp.category)}</div>
