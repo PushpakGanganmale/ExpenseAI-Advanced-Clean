@@ -166,7 +166,7 @@ export default function UserDashboard() {
       body: JSON.stringify({ category: cv, monthlyLimit: lv, month: mv }),
     }).then(r => r.json()).then(() => {
       setBudgetLimit('');
-      setMessage('? Budget set successfully!');
+      setMessage('✓ Budget set successfully!');
       setLoading(false);
       setTimeout(() => setMessage(''), 3000);
       fetch(`${API_BASE_URL}/budgets?month=` + mv, { headers: { Authorization: 'Bearer ' + getToken() } })
@@ -188,7 +188,7 @@ export default function UserDashboard() {
       body: JSON.stringify({ title: recTitle, amount: parseFloat(recAmount), category: recCategory, frequency: recFrequency, nextDate: recNextDate, notes: recNotes }),
     }).then(r => r.json()).then(() => {
       setRecTitle(''); setRecAmount(''); setRecNextDate(''); setRecNotes('');
-      setMessage('? Recurring expense added!');
+      setMessage('✓ Recurring expense added!');
       setLoading(false);
       setTimeout(() => setMessage(''), 3000);
       fetchRecurring();
@@ -364,7 +364,7 @@ export default function UserDashboard() {
           <div style={{ maxWidth: '520px' }}>
             <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '24px' }}>Add Expense</h1>
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px' }}>
-              {message === 'success' && <div style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: '#00d68f' }}>? Expense added!</div>}
+              {message === 'success' && <div style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: '#00d68f' }}>✓ Expense added!</div>}
               {message && message !== 'success' && <div style={{ background: 'rgba(255,77,77,0.1)', border: '1px solid rgba(255,77,77,0.3)', borderRadius: '10px', padding: '12px', marginBottom: '20px', color: '#ff4d4d' }}>{message}</div>}
               <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} style={inputStyle} />
               <input type="number" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} style={inputStyle} />
